@@ -2,6 +2,7 @@ var readlineSync = require('readline-sync');
 const chalk = require('chalk');
 
 var score = 0;
+var flag = 0;
 
 var highScores = [{
   name: "Omer",
@@ -55,8 +56,17 @@ function finalScore(){
   console.log("Your final score is: "+score+"\n");
   console.log("Current High Scores\n");
   highScores.map(scores =>
-    console.log(scores.name+" : "+scores.points)
+    {
+      console.log(scores.name+" : "+scores.points)
+      if(score > scores.points)
+      {
+        flag++;
+      }
+    }
   );
+  if(flag===2){
+    console.log("You've scored the highest points in this game!!");
+  }
 }
 
 welcome();
